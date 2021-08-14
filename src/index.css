@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+:root {
+  --white: #ffffff;
+  --dark-blue: #255f85;
+  --brown: #b85128;
+  --grey: #777;
+  --latest-tips: 200px;
+  --red: #f51b00;
+  --light-grey: #e5c736;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+/* Utility Classes */
+
+p {
+  line-height: 25px;
+}
+
+.text-grey {
+  color: var(--grey);
+}
+
+.text-small {
+  font-size: 0.8rem;
+}
+
+.example a {
+  color: yellow;
+}
+
+.title-text {
+  font-size: 1.5rem;
+}
+
+.Btn-primary {
+  text-decoration: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: var(--dark-blue);
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.Btn-primary:hover {
+  color: var(--dark-blue);
+  opacity: 1;
+  border: 1px solid var(--dark-blue);
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+.Btn-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.Btn-primary:disabled:hover {
+  color: var(--white);
+  cursor: not-allowed;
+  border: 1px solid transparent;
+  background-color: var(--dark-blue);
+  opacity: 0.2;
+}
+
+.Btn-outline {
+  text-decoration: none;
+  color: var(--dark-blue);
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid var(--dark-blue);
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.Btn-outline:hover {
+  color: var(--white);
+  opacity: 1;
+  border: 1px solid transparent;
+  background-color: var(--dark-blue);
+  transition: all 0.2s ease-in-out;
+}
+
+.Btn-danger {
+  opacity: 1;
+  text-decoration: none;
+  color: var(--red);
+  cursor: pointer;
+  padding: 4px 12px;
+  border: 1px solid var(--red);
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.Btn-danger:hover {
+  color: var(--white);
+  opacity: 1;
+  border: 1px solid transparent;
+  background-color: var(--red);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Utility Classes */
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+  margin-top: auto;
+}

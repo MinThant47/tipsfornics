@@ -1,0 +1,6 @@
+.brief h6,
+.full h6 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+}

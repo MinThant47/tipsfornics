@@ -1,0 +1,55 @@
+.tip-detail {
+  margin-top: 20px;
+}
+
+.tip-detail h5 {
+  padding-right: 10px;
+  line-height: 30px;
+  color: var(--dark-blue);
+  font-weight: 600;
+  display: inline-block;
+}
+
+.tip-detail p {
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.img-detail {
+  border-radius: 7px;
+  max-width: 250px;
+  margin: 0 20px 0 30px;
+  float: left;
+  cursor: pointer;
+}
+
+.img-details {
+  border-radius: 7px;
+  max-width: 500px;
+  margin: 0 20px 0 20px;
+}
+
+.img-detail img,
+.img-details img {
+  border-radius: 6px;
+  max-width: 100%;
+}
+
+.other-img {
+  cursor: pointer;
+}
+
+.other-img img {
+  border-radius: 6px;
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 1000px) {
+  .img-detail {
+    margin: 0;
+    margin-bottom: 20px;
+    float: none;
+  }
+}

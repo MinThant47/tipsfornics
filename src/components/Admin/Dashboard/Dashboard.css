@@ -1,0 +1,24 @@
+#searchBar {
+  margin-bottom: 40px;
+}
+
+#category {
+  margin-bottom: 30px;
+  margin-top: 25px;
+}
+
+#select-box,
+#select-box option {
+  padding: 10px;
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+@media (max-width: 768px) {
+  #searchBar {
+    margin-bottom: 25px;
+  }
+  #category {
+    margin-bottom: 20px;
+  }
+}

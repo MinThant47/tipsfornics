@@ -1,0 +1,79 @@
+.loading-card {
+  position: relative;
+  width: 500px;
+  height: 200px;
+  background-color: var(--white);
+  border-radius: 10px;
+  margin: 200px auto;
+  padding-top: 80px;
+}
+
+.loading-card .cross-icon {
+  font-size: 2rem;
+  color: var(--red);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.loading-card h4 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--grey);
+}
+
+.progress {
+  width: 400px;
+  height: 150px;
+  margin: 0 auto;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 50%;
+  height: 100%;
+  background-color: var(--dark-blue);
+}
+
+@media only screen and (max-width: 770px) {
+  .loading-card {
+    width: 375px;
+    height: 150px;
+    padding-top: 60px;
+  }
+
+  .loading-card .cross-icon {
+    font-size: 1.5rem;
+  }
+
+  .loading-card h4 {
+    font-size: 1rem;
+  }
+
+  .progress {
+    width: 300px;
+    height: 125px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .loading-card .cross-icon {
+    font-size: 1.2rem;
+  }
+  .loading-card {
+    width: 275px;
+    height: 150px;
+    padding-top: 50px;
+  }
+  .loading-card h4 {
+    font-size: 0.9rem;
+  }
+
+  .progress {
+    width: 200px;
+    height: 100px;
+  }
+}

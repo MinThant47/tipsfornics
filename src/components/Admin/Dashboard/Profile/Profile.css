@@ -1,0 +1,32 @@
+.account-info h5,
+.reader-questions h5 {
+  display: inline-block;
+  color: var(--dark-blue);
+  padding-bottom: 10px;
+}
+
+.question-card {
+  margin: 20px 0;
+  margin-right: 20px;
+  padding: 20px;
+  border: 1px solid #f4f4f4;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.account small,
+.question-card small {
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+.account button {
+  background-color: transparent;
+  border: none;
+  color: blue;
+  text-decoration: underline;
+  text-decoration-color: blue;
+}
+
+.account button:hover {
+  opacity: 0.8;
+}

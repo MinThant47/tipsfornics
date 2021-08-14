@@ -1,0 +1,21 @@
+/* Landing Page */
+
+#landing #landing-text h2 {
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: var(--dark-blue);
+  font-size: 3rem;
+}
+#landing #landing-text p {
+  padding: 0;
+  margin: 20px 0;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  #landing #landing-text h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Landing Page */
