@@ -104,7 +104,7 @@ nav .nav-menu li a:hover {
     opacity: 0;
     background-color: var(--white);
     position: absolute;
-    top: 65px;
+    min-height: 100vh;
     left: -100%;
     width: 100%;
     flex-direction: column;

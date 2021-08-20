@@ -1,10 +1,16 @@
 import "./NavBar.css";
 import tfn_logo from "../../img/tfn logo.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [active, setActive] = useState(false);
+  useEffect(() => {
+    active
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "visible");
+  });
+
   return (
     <nav className="container">
       <Link to="/" className="title">

@@ -18,54 +18,54 @@ import TipProvider from "./contexts/TipContext";
 function App() {
   return (
     <div className="app">
-    <AuthProvider>
-      <TipProvider>
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/all-tips" component={AllTips} />
-            <Route path="/tip-detail/:id" component={TipDetail} />
+      <AuthProvider>
+        <TipProvider>
+          <Router>
+            <NavBar />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/all-tips" component={AllTips} />
+              <Route path="/tip-detail/:id" component={TipDetail} />
 
-            <Route
-              path={`/${process.env.REACT_APP_TFN_PASSCODE}/login`}
-              component={Login}
-            />
-            <Route
-              path={`/${process.env.REACT_APP_TFN_PASSCODE}/sign-up`}
-              component={SignUp}
-            />
-            <PrivateRoute
-              path={`/${process.env.REACT_APP_TFN_PASSCODE}/dashboard`}
-              component={Dashboard}
-            />
-
-            <PrivateRoute
-              path={`/${process.env.REACT_APP_TFN_PASSCODE}/add-new-tip`}
-              component={NewCard}
-            />
-
-            <PrivateRoute
-              path={`/${process.env.REACT_APP_TFN_PASSCODE}/edit-tip/:id`}
-              component={EditTipCard}
-            />
-
-            <PrivateRoute
-              path={`/${process.env.REACT_APP_TFN_PASSCODE}/profile`}
-              component={Profile}
-            />
-
-            <Route path="/*">
-              <ErrorPage
-                type={"Error 404"}
-                secondary={"This page is not available."}
+              <Route
+                path={`/${process.env.REACT_APP_TFN_PASSCODE}/login`}
+                component={Login}
               />
-            </Route>
-          </Switch>
-          <Footer />
-        </Router>
-      </TipProvider>
-    </AuthProvider>
+              <Route
+                path={`/${process.env.REACT_APP_TFN_PASSCODE}/sign-up`}
+                component={SignUp}
+              />
+              <PrivateRoute
+                path={`/${process.env.REACT_APP_TFN_PASSCODE}/dashboard`}
+                component={Dashboard}
+              />
+
+              <PrivateRoute
+                path={`/${process.env.REACT_APP_TFN_PASSCODE}/add-new-tip`}
+                component={NewCard}
+              />
+
+              <PrivateRoute
+                path={`/${process.env.REACT_APP_TFN_PASSCODE}/edit-tip/:id`}
+                component={EditTipCard}
+              />
+
+              <PrivateRoute
+                path={`/${process.env.REACT_APP_TFN_PASSCODE}/profile`}
+                component={Profile}
+              />
+
+              <Route path="/*">
+                <ErrorPage
+                  type={"Error 404"}
+                  secondary={"This page is not available."}
+                />
+              </Route>
+            </Switch>
+            <Footer />
+          </Router>
+        </TipProvider>
+      </AuthProvider>
     </div>
   );
 }

@@ -19,6 +19,12 @@ const TipDetail = () => {
   const [otherImg, setotherImg] = useState([]);
 
   useEffect(() => {
+    imgModal !== null
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "visible");
+  });
+
+  useEffect(() => {
     if (tips.length !== 0) {
       const filteratedTip = tips.filter((tip) => tip.id === id);
       setTitle(filteratedTip[0].title);
@@ -62,7 +68,7 @@ const TipDetail = () => {
 
           <p className="text-muted">{paragraph}</p>
 
-          <div className="row align-items-sm-center justify-content-sm-center align-items-lg-center justify-content-lg-start">
+          <div className="mt-5 row align-items-sm-center justify-content-sm-center align-items-lg-center justify-content-lg-start">
             {otherImg &&
               otherImg.map((i, index) => {
                 return (
@@ -70,7 +76,7 @@ const TipDetail = () => {
                     key={index}
                     className="other-img mb-4 col-12 col-sm-12 col-md-6 col-lg-4"
                   >
-                    <div className="img-details">
+                    <div className="img-details mb-4">
                       <img
                         src={i.url}
                         onClick={() => handleClick(i.url, i.name)}
