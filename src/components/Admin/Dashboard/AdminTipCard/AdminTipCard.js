@@ -13,8 +13,9 @@ const AdminTipCard = ({
   tip,
   id,
   edit,
+  previewImg,
+  previewCaption,
   img,
-  caption,
   upload,
   category,
   title,
@@ -50,7 +51,7 @@ const AdminTipCard = ({
   return (
     <div className="tip-card">
       <div className="img-card">
-        <img src={img[0].url} alt={caption[0].name} />
+        <img src={previewImg} alt={previewCaption} />
       </div>
 
       <div className="content-card">

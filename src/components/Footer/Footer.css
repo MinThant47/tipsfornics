@@ -6,7 +6,20 @@
   align-items: center;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+}
+
 footer {
+  margin-top: 50px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
   background-color: var(--dark-blue);
 }
 

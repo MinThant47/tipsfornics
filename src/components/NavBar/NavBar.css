@@ -4,6 +4,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 nav .title img {
@@ -22,7 +23,7 @@ nav .title img {
 
 #mobile-menu {
   position: absolute;
-  top: 1%;
+  top: 10%;
   right: 5%;
   transform: translate(5%, 20%);
   z-index: 100;
@@ -125,8 +126,12 @@ nav .nav-menu li a:hover {
     padding: 30px 0;
   }
 
+  nav .nav-menu li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
   nav .nav-menu li a {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     width: 100%;
   }
 
@@ -134,9 +139,9 @@ nav .nav-menu li a:hover {
     background: transparent;
   }
 
-  nav .nav-menu li button {
-    font-size: 1.1rem;
-    width: 80%;
+  #alltipBtn {
+    font-size: 1.2rem;
+    padding: 6px 30%;
   }
 
   .menu-toggle .bar {

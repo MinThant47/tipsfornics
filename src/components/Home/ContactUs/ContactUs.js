@@ -120,8 +120,6 @@ const ContactUS = () => {
           </div>
         </div>
       </section>
-      <br />
-      <br />
     </>
   );
 };

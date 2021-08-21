@@ -9,11 +9,11 @@ import SkeletonTip from "../../../Skeleton/SkeletonTip";
 const Dashboard = () => {
   const { tips, categories } = useTip();
   const [cat, setCat] = useState("all category");
-  const [filterTips, setFilterTips] = useState();
+  const [filterTips, setFilterTips] = useState(null);
 
   const [search, setSearch] = useState("");
-  const [searchTips, setSearchTips] = useState();
-  const [finalTips, setFinalTips] = useState();
+  const [searchTips, setSearchTips] = useState(null);
+  const [finalTips, setFinalTips] = useState(null);
 
   useEffect(() => {
     if (search !== "") {
@@ -24,7 +24,7 @@ const Dashboard = () => {
           )
       );
     } else {
-      setSearchTips();
+      setSearchTips(null);
     }
   }, [tips, search]);
 
@@ -113,14 +113,12 @@ const Dashboard = () => {
                 tip={tip}
                 key={tip.id}
                 id={tip.id}
-                img={
+                previewImg={
                   tip.images.length !== 0
-                    ? tip.images
+                    ? tip.images[0].url
                     : "https://www.russorizio.com/wp-content/uploads/2016/07/ef3-placeholder-image.jpg"
                 }
-                caption={
-                  tip.images.length !== 0 ? tip.images : "placeholder-image"
-                }
+                img={tip.images.length !== 0 ? tip.images : null}
                 edit={tip.lastedit}
                 upload={tip.upload}
                 title={tip.title}

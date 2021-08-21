@@ -46,6 +46,7 @@ const NavBar = () => {
         </li>
         <li>
           <Link
+            id="alltipBtn"
             onClick={() => setActive(false)}
             className="Btn-primary"
             to="/all-tips"
