@@ -17,6 +17,7 @@ const TipDetail = () => {
   const [paragraph, setParagraph] = useState("");
   const [firstImg, setFirstImg] = useState("");
   const [otherImg, setotherImg] = useState([]);
+  const [video, setVideo] = useState([]);
 
   useEffect(() => {
     imgModal !== null
@@ -31,6 +32,14 @@ const TipDetail = () => {
       setParagraph(filteratedTip[0].paragraph);
       setCategory(filteratedTip[0].category);
       setFirstImg(filteratedTip[0].images[0]);
+
+      if (filteratedTip[0].videos.length >= 1) {
+        let doc = [];
+        filteratedTip[0].videos.forEach((vid) => {
+          doc.push(vid);
+        });
+        setVideo(doc);
+      }
 
       if (filteratedTip[0].images.length > 1) {
         let doc = [];
@@ -82,6 +91,25 @@ const TipDetail = () => {
                         onClick={() => handleClick(i.url, i.name)}
                         alt={i.name}
                       />
+                    </div>
+                  </div>
+                );
+              })}
+            {video &&
+              video.map((vid, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="other-img mb-4 col-12 col-sm-12 col-md-6"
+                  >
+                    <div className="video-container">
+                      <video
+                        key={index}
+                        webkit-playsinline="true"
+                        controls
+                        className="videoLandscape"
+                        src={vid.url}
+                      ></video>
                     </div>
                   </div>
                 );

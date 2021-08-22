@@ -19,6 +19,7 @@ const NewCard = () => {
   const [defaultCat, setDefaultCat] = useState("");
 
   const [img, setImg] = useState([]);
+  const [vid, setVid] = useState([]);
 
   const titleRef = useRef();
   const summaryRef = useRef();
@@ -66,6 +67,7 @@ const NewCard = () => {
         upload: false,
         images: img,
         category: finalCat.toLowerCase(),
+        videos: vid,
       })
       .then(() => {
         setLoading(false);
@@ -82,6 +84,7 @@ const NewCard = () => {
       .delete()
       .then(() => {
         setImg(img.filter((i) => i.url !== url));
+        setVid(vid.filter((i) => i.url !== url));
       })
       .catch((e) => {
         console.log(e.message);
@@ -110,9 +113,27 @@ const NewCard = () => {
                 </div>
               );
             })}
+          {vid &&
+            vid.map((t, index) => {
+              return (
+                <div key={index} className="col-6 col-sm-6 col-md-4 col-lg-3">
+                  <div className="img-wrap">
+                    <div className="overlay">
+                      <AiOutlineMinusCircle
+                        className="icon"
+                        onClick={() => {
+                          deleteFromStorage(t.url);
+                        }}
+                      />
+                    </div>
+                    <video key={index} src={t.url}></video>
+                  </div>
+                </div>
+              );
+            })}
         </div>
 
-        <ImgSelect setImg={setImg} />
+        <ImgSelect setImg={setImg} setVid={setVid} />
 
         <div className="row">
           <form onSubmit={handleSubmit}>
@@ -184,7 +205,6 @@ const NewCard = () => {
             </div>
             <div className="my-4 form-group">
               <textarea
-                required
                 disabled={loading}
                 ref={fullRef}
                 className="form-control"

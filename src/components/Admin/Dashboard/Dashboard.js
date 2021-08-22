@@ -119,6 +119,7 @@ const Dashboard = () => {
                     : "https://www.russorizio.com/wp-content/uploads/2016/07/ef3-placeholder-image.jpg"
                 }
                 img={tip.images.length !== 0 ? tip.images : null}
+                vid={tip.videos.length !== 0 ? tip.videos : null}
                 edit={tip.lastedit}
                 upload={tip.upload}
                 title={tip.title}

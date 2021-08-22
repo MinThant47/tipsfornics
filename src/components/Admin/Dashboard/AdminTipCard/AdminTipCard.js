@@ -16,6 +16,7 @@ const AdminTipCard = ({
   previewImg,
   previewCaption,
   img,
+  vid,
   upload,
   category,
   title,
@@ -41,6 +42,11 @@ const AdminTipCard = ({
     if (window.confirm("Delete this tip?")) {
       if (tip.images.length !== 0) {
         img.map((i) => {
+          return deleteFromStorage(i.url);
+        });
+      }
+      if (tip.videos.length !== 0) {
+        vid.map((i) => {
           return deleteFromStorage(i.url);
         });
       }

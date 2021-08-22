@@ -46,10 +46,24 @@
   object-fit: cover;
 }
 
+.video-container video {
+  max-width: 90%;
+  width: 100%;
+  height: auto;
+}
+
 @media only screen and (max-width: 1000px) {
   .img-detail {
     margin: 0;
     margin-bottom: 20px;
     float: none;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .video-container video {
+    max-width: 95%;
+    width: 100%;
+    height: auto;
   }
 }

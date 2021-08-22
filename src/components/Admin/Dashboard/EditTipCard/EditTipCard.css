@@ -25,6 +25,7 @@
   top: 1rem;
   right: 1rem;
   transition: all 0.2s ease-out;
+  z-index: 1;
 }
 
 .img-wrap .overlay .icon:hover {

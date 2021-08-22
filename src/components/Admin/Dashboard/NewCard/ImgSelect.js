@@ -3,11 +3,13 @@ import { Alert } from "react-bootstrap";
 import { RiImageAddFill } from "react-icons/ri";
 import { storage } from "../../../../Firebase/Firebase";
 
-const ImgSelect = ({ setImg }) => {
+const ImgSelect = ({ setImg, setVid }) => {
   const [error, setError] = useState();
 
   const [progress, setProgress] = useState(0);
-  const types = ["image/png", "image/jpeg"];
+  const types = ["image/png", "image/jpeg", "video/mp4", "video/m4v"];
+  const imgType = ["image/png", "image/jpeg"];
+  const vidType = ["video/mp4", "video/m4v"];
 
   const onChangeHandler = (e) => {
     let selectedfiles = e.target.files;
@@ -16,24 +18,43 @@ const ImgSelect = ({ setImg }) => {
       if (selectedfiles[i] && types.includes(selectedfiles[i].type)) {
         setError("");
 
-        const storageRef = storage.ref(`images/${selectedfiles[i].name}`);
-        storageRef.put(selectedfiles[i]).on(
-          "state_changed",
-          (snap) => {
-            let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-            setProgress(percentage);
-          },
-          (err) => {
-            setError(err);
-          },
-          async () => {
-            const url = await storageRef.getDownloadURL();
-            const name = selectedfiles[i].name;
-            setImg((oldimg) => [...oldimg, { url, name }]);
-          }
-        );
+        if (imgType.includes(selectedfiles[i].type)) {
+          const storageRef = storage.ref(`images/${selectedfiles[i].name}`);
+          storageRef.put(selectedfiles[i]).on(
+            "state_changed",
+            (snap) => {
+              let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+              setProgress(percentage);
+            },
+            (err) => {
+              setError(err);
+            },
+            async () => {
+              const url = await storageRef.getDownloadURL();
+              const name = selectedfiles[i].name;
+              setImg((oldimg) => [...oldimg, { url, name }]);
+            }
+          );
+        } else if (vidType.includes(selectedfiles[i].type)) {
+          const storageRef = storage.ref(`videos/${selectedfiles[i].name}`);
+          storageRef.put(selectedfiles[i]).on(
+            "state_changed",
+            (snap) => {
+              let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+              setProgress(percentage);
+            },
+            (err) => {
+              setError(err);
+            },
+            async () => {
+              const url = await storageRef.getDownloadURL();
+              const name = selectedfiles[i].name;
+              setVid((oldVid) => [...oldVid, { url, name }]);
+            }
+          );
+        }
       } else {
-        setError("Please select valid image (png/jpg)");
+        setError("Please select valid image (png/jpg) or video (mp4/m4v)");
       }
     }
   };
@@ -45,7 +66,7 @@ const ImgSelect = ({ setImg }) => {
         style={{ marginBottom: 25 }}
       >
         <RiImageAddFill className="add-icon" />
-        <small className="text-grey"> Add Image </small>
+        <small className="text-grey"> Add Image/ Video </small>
       </label>
       <input type="file" onChange={onChangeHandler} id="file" multiple />
       {error && (

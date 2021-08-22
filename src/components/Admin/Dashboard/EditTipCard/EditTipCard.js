@@ -20,7 +20,7 @@ const EditTipCard = () => {
   const [loading, setLoading] = useState(false);
 
   const [img, setImg] = useState([]);
-  const [temp, setTemp] = useState([]);
+  const [vid, setVid] = useState([]);
 
   const [othercat, setOthercat] = useState("");
   const [finalCat, setFinalCat] = useState("");
@@ -46,6 +46,7 @@ const EditTipCard = () => {
       .delete()
       .then(() => {
         setImg(img.filter((i) => i.url !== url));
+        setVid(vid.filter((i) => i.url !== url));
       })
       .catch((e) => {
         console.log(e.message);
@@ -77,6 +78,7 @@ const EditTipCard = () => {
         paragraph: paragraph,
         lastedit: username,
         images: img,
+        videos: vid,
         category: finalCat.toLowerCase(),
       })
       .then(() => {
@@ -96,6 +98,7 @@ const EditTipCard = () => {
       setSummary(filteratedTip[0].summary);
       setParagraph(filteratedTip[0].paragraph);
       setImg([...filteratedTip[0].images]);
+      setVid([...filteratedTip[0].videos]);
       setCat(filteratedTip[0].category);
       setDefault(filteratedTip[0].category);
     }
@@ -126,9 +129,27 @@ const EditTipCard = () => {
           ) : (
             <></>
           )}
+          {vid &&
+            vid.map((t, index) => {
+              return (
+                <div key={index} className="col-6 col-sm-6 col-md-4 col-lg-3">
+                  <div className="img-wrap">
+                    <div className="overlay">
+                      <AiOutlineMinusCircle
+                        className="icon"
+                        onClick={() => {
+                          deleteFromStorage(t.url);
+                        }}
+                      />
+                    </div>
+                    <video key={index} src={t.url}></video>
+                  </div>
+                </div>
+              );
+            })}
         </div>
 
-        <ImgSelect temp={temp} setTemp={setTemp} setImg={setImg} />
+        <ImgSelect setImg={setImg} setVid={setVid} />
 
         <div className="row">
           <form>
