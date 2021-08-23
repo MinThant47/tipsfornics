@@ -27,6 +27,7 @@
 }
 
 .recent-tips .content h5 {
+  color: var(--dark-blue);
   line-height: 25px;
   font-weight: 500;
   font-size: 1.05rem;

@@ -229,6 +229,7 @@ const NewCard = () => {
           </form>
         </div>
       </div>
+      
     </section>
   );
 };

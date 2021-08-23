@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTip } from "../../contexts/TipContext";
 import SkeletonDetail from "../../Skeleton/SkeletonDetail";
+import { AiOutlineCalendar } from "react-icons/ai";
 
 const TipDetail = () => {
   const { id } = useParams();
@@ -13,6 +14,7 @@ const TipDetail = () => {
   const { tips } = useTip();
 
   const [title, setTitle] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
   const [category, setCategory] = useState("");
   const [paragraph, setParagraph] = useState("");
   const [firstImg, setFirstImg] = useState("");
@@ -30,6 +32,7 @@ const TipDetail = () => {
       const filteratedTip = tips.filter((tip) => tip.id === id);
       setTitle(filteratedTip[0].title);
       setParagraph(filteratedTip[0].paragraph);
+      setCreatedAt(filteratedTip[0].createdAt);
       setCategory(filteratedTip[0].category);
       setFirstImg(filteratedTip[0].images[0]);
 
@@ -71,6 +74,10 @@ const TipDetail = () => {
             <h5>{title}</h5>
             <small className="text-capitalize d-block text-grey">
               {category}
+            </small>
+            <small className="text-capitalize text-grey">
+              <AiOutlineCalendar /> &nbsp;
+              {createdAt && createdAt.toDate().toDateString().slice(3)}
             </small>
           </div>
           <hr />

@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import "./RecentTips.css";
 
 const RecentTipCard = ({ id, img, title, category, caption }) => {
-  const titleStyle =
-    title.length <= 50 ? { fontSize: "18px" } : { fontSize: "14px" };
   return (
     <div className="col-12 col-sm-12 col-md-6 col-lg-3">
       <div className="recent-tips">
@@ -11,8 +9,8 @@ const RecentTipCard = ({ id, img, title, category, caption }) => {
           <img src={img} alt={caption} />
         </div>
         <div className="content">
-          <h5 style={titleStyle} className="text-grey">
-            {title}
+          <h5 className="text-grey">
+            {title.length >= 25 ? title.slice(0, 25) + "..." : title}
           </h5>
           <p className="text-capitalize text-grey">{category}</p>
           <Link to={`/tip-detail/${id}`} className="Btn-primary">
