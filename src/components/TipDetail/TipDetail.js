@@ -1,10 +1,11 @@
 import "./TipDetail.css";
 import ImageModal from "../ImageModal/ImageModal";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useTip } from "../../contexts/TipContext";
 import SkeletonDetail from "../../Skeleton/SkeletonDetail";
 import { AiOutlineCalendar } from "react-icons/ai";
+import { BsArrowBarRight } from "react-icons/bs";
 
 const TipDetail = () => {
   const { id } = useParams();
@@ -20,6 +21,8 @@ const TipDetail = () => {
   const [firstImg, setFirstImg] = useState("");
   const [otherImg, setotherImg] = useState([]);
   const [video, setVideo] = useState([]);
+
+  const history = useHistory();
 
   useEffect(() => {
     imgModal !== null
@@ -122,6 +125,15 @@ const TipDetail = () => {
                 );
               })}
           </div>
+          <button
+            className="Btn-primary"
+            // style={{ float: "right" }}
+            onClick={() => {
+              history.goBack();
+            }}
+          >
+            Back to the tips <BsArrowBarRight />
+          </button>
         </div>
         {imgModal && (
           <ImageModal
