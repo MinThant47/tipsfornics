@@ -3,7 +3,7 @@ import { Alert } from "react-bootstrap";
 import { RiImageAddFill } from "react-icons/ri";
 import { storage } from "../../../../Firebase/Firebase";
 
-const ImgSelect = ({ setImg, setVid }) => {
+const ImgSelect = ({ setImg, setVid, setDirty }) => {
   const [error, setError] = useState();
 
   const [progress, setProgress] = useState(0);
@@ -16,6 +16,7 @@ const ImgSelect = ({ setImg, setVid }) => {
 
     for (let i = 0, numFiles = selectedfiles.length; i < numFiles; i++) {
       if (selectedfiles[i] && types.includes(selectedfiles[i].type)) {
+        setDirty();
         setError("");
 
         if (imgType.includes(selectedfiles[i].type)) {

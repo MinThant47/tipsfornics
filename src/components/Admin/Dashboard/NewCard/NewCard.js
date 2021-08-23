@@ -7,8 +7,10 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import { useTip } from "../../../../contexts/TipContext";
 import ImgSelect from "./ImgSelect";
 import { AiOutlineMinusCircle } from "react-icons/ai";
+import useWarning from "../../../../hooks/useWarning";
 
 const NewCard = () => {
+  const [Prompt, setDirty, setClean] = useWarning();
   const { username } = useAuth();
   const { categories } = useTip();
   const [cat, setCat] = useState("");
@@ -42,6 +44,7 @@ const NewCard = () => {
   }, [cat, othercat, defaultCat]);
 
   const handleSubmit = (e) => {
+    setClean();
     setLoading(true);
     e.preventDefault();
     const time = timestamp();
@@ -133,10 +136,10 @@ const NewCard = () => {
             })}
         </div>
 
-        <ImgSelect setImg={setImg} setVid={setVid} />
+        <ImgSelect setDirty={setDirty} setImg={setImg} setVid={setVid} />
 
         <div className="row">
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="form-group">
               <input
                 disabled={loading}
@@ -145,6 +148,9 @@ const NewCard = () => {
                 type="text"
                 className="form-control"
                 placeholder="Article Title"
+                onChange={() => {
+                  setDirty();
+                }}
               />
             </div>
             {cat !== "other" ? (
@@ -174,6 +180,7 @@ const NewCard = () => {
                     required
                     onChange={(e) => {
                       setOthercat(e.target.value);
+                      setDirty();
                     }}
                     type="text"
                     className="form-control"
@@ -200,6 +207,9 @@ const NewCard = () => {
                 ref={summaryRef}
                 className="form-control"
                 rows="3"
+                onChange={() => {
+                  setDirty();
+                }}
                 placeholder="Summary"
               ></textarea>
             </div>
@@ -209,11 +219,21 @@ const NewCard = () => {
                 ref={fullRef}
                 className="form-control"
                 rows="10"
+                onChange={() => {
+                  setDirty();
+                }}
                 placeholder="Full Article"
               ></textarea>
             </div>
             <div className="button-row d-flex justify-content-start">
-              <button disabled={loading} type="submit" className="Btn-primary">
+              <button
+                disabled={loading}
+                onClick={(e) => {
+                  handleSubmit(e);
+                }}
+                type="submit"
+                className="Btn-primary"
+              >
                 Submit
               </button>
               <button
@@ -229,7 +249,7 @@ const NewCard = () => {
           </form>
         </div>
       </div>
-      
+      {Prompt}
     </section>
   );
 };

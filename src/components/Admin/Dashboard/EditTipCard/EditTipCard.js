@@ -9,8 +9,10 @@ import { db } from "../../../../Firebase/Firebase";
 import { storage } from "../../../../Firebase/Firebase";
 import { timestamp } from "../../../../Firebase/Firebase";
 import { useHistory } from "react-router-dom";
+import useWarning from "../../../../hooks/useWarning";
 
 const EditTipCard = () => {
+  const [Prompt, setDirty, setClean] = useWarning();
   const [cat, setCat] = useState("");
 
   const [title, setTitle] = useState();
@@ -54,6 +56,7 @@ const EditTipCard = () => {
   };
 
   const handleSubmit = (e) => {
+    setClean();
     setLoading(true);
     e.preventDefault();
     const time = timestamp();
@@ -149,7 +152,7 @@ const EditTipCard = () => {
             })}
         </div>
 
-        <ImgSelect setImg={setImg} setVid={setVid} />
+        <ImgSelect setDirty={setDirty} setImg={setImg} setVid={setVid} />
 
         <div className="row">
           <form>
@@ -160,7 +163,10 @@ const EditTipCard = () => {
                 className="form-control"
                 required
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => {
+                  setDirty();
+                  setTitle(e.target.value);
+                }}
                 placeholder="Article Title"
               />
             </div>
@@ -170,7 +176,10 @@ const EditTipCard = () => {
                   id="select-box"
                   className="form-select"
                   value={cat}
-                  onChange={(e) => setCat(e.target.value)}
+                  onChange={(e) => {
+                    setDirty();
+                    setCat(e.target.value);
+                  }}
                 >
                   {categories &&
                     categories.map((category, index) => {
@@ -189,6 +198,7 @@ const EditTipCard = () => {
                   <input
                     required
                     onChange={(e) => {
+                      setDirty();
                       setOthercat(e.target.value);
                     }}
                     type="text"
@@ -216,7 +226,10 @@ const EditTipCard = () => {
                 required
                 disabled={loading}
                 value={summary}
-                onChange={(e) => setSummary(e.target.value)}
+                onChange={(e) => {
+                  setDirty();
+                  setSummary(e.target.value);
+                }}
                 className="form-control"
                 rows="3"
                 placeholder="Summary"
@@ -227,7 +240,10 @@ const EditTipCard = () => {
                 required
                 disabled={loading}
                 value={paragraph}
-                onChange={(e) => setParagraph(e.target.value)}
+                onChange={(e) => {
+                  setDirty();
+                  setParagraph(e.target.value);
+                }}
                 className="form-control"
                 rows="10"
                 placeholder="Full Article"
@@ -236,7 +252,7 @@ const EditTipCard = () => {
             <div className="button-row d-flex justify-content-start">
               <button
                 disabled={loading}
-                onClick={handleSubmit}
+                onClick={(e) => handleSubmit(e)}
                 className="Btn-primary"
               >
                 Submit
@@ -256,6 +272,7 @@ const EditTipCard = () => {
           </form>
         </div>
       </div>
+      {Prompt}
     </section>
   );
 };
